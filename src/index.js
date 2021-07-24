@@ -1,17 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import DetailPage from './DetailPage';
+import FavoritePage from './FavoritePage';
+import ListPage from './ListPage';
+import SearchPage from './SearchPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <SearchPage />
+        </Route>
+        <Route path="/list/:artist">
+          <ListPage />
+        </Route>
+        <Route path="/detail/:id">
+          <DetailPage />
+        </Route>
+        <Route path="/favorite">
+          <FavoritePage />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
